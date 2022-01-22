@@ -18,7 +18,6 @@ function Cell(i, j) {
   };
 
   this.show = function () {
-    console.log(this);
     var x = this.i * w;
     var y = this.j * w;
     stroke(255);
@@ -45,10 +44,10 @@ function Cell(i, j) {
   this.checkNeighbors = function () {
     var neighbors = [];
 
-    var top = grid[i][j - 1];
-    var right = grid[i + 1] ? grid[i + 1][j] : undefined;
-    var bottom = grid[i][j + 1];
-    var left = grid[i - 1] ? grid[i - 1][j] : undefined;
+    var left = grid[i][j - 1];
+    var bottom = grid[i + 1] ? grid[i + 1][j] : undefined;
+    var right = grid[i][j + 1];
+    var top = grid[i - 1] ? grid[i - 1][j] : undefined;
 
     if (top && !top.visited) {
       neighbors.push(top);
@@ -71,13 +70,13 @@ function Cell(i, j) {
     }
   };
   this.addNeighbors = function (grid) {
-    if (this.i < cols - 1) {
+    if (this.i < rows - 1) {
       this.neighborsCell.push(grid[this.i + 1][this.j]);
     }
     if (this.i > 0) {
       this.neighborsCell.push(grid[this.i - 1][this.j]);
     }
-    if (this.j < rows - 1) {
+    if (this.j < cols - 1) {
       this.neighborsCell.push(grid[this.i][this.j + 1]);
     }
     if (this.j > 0) {
