@@ -10,16 +10,17 @@ function Cell(i, j) {
   this.neighborsCell = [];
 
   this.highlight = function () {
-    var x = this.i * w;
-    var y = this.j * w;
+    var y = this.i * w;
+    var x = this.j * w;
     noStroke();
     fill(0, 0, 255, 100);
     rect(x, y, w, w);
   };
 
   this.show = function () {
-    var x = this.i * w;
-    var y = this.j * w;
+    var y = this.i * w;
+    var x = this.j * w;
+  
     stroke(255);
     if (this.walls[0]) {
       line(x, y, x + w, y);
@@ -69,6 +70,7 @@ function Cell(i, j) {
       return undefined;
     }
   };
+
   this.addNeighbors = function (grid) {
     if (this.i < rows - 1) {
       this.neighborsCell.push(grid[this.i + 1][this.j]);

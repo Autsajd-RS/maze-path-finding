@@ -1,5 +1,5 @@
 var cols, rows;
-var w = 25;
+var w = 30;
 var grid = [[], []];
 var stack = [];
 var mazeFinished = false;
@@ -10,7 +10,6 @@ var openSet = new Array();
 var closedSet = new Array();
 var path = [];
 var W, H;
-
 var current;
 
 //triggered only once
@@ -125,7 +124,7 @@ function draw() {
         var neighbor = neighbors[i];
         if (
           !closedSet.includes(neighbor) &&
-          checkWallBetween(currentCell, neighbor)
+          !checkWallBetween(currentCell, neighbor)
         ) {
           var tempG = currentCell.g + 1;
           var newPath = false;
@@ -164,7 +163,7 @@ function draw() {
     strokeWeight(W / 4);
     beginShape();
     for (var i = 0; i < path.length; i++) {
-      vertex(path[i].i * W + W / 2, path[i].j * H + H / 2);
+      vertex(path[i].j * W + W / 2, path[i].i * H + H / 2);
     }
     endShape();
   }
